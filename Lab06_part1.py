@@ -35,16 +35,13 @@ player_stats = {
 ## implement highest_score
 def highest_score(player_stats):
     highest_score = 0
-
+    highest_scorer = []
     for i in player_stats:
         for j in player_stats[i]:
             if (j[1] > highest_score):
                 highest_score = j[1]
-    
-    return highest_score
-
-
-print "The highest score is:",highest_score(player_stats)
+                highest_scorer = (i,j[0],j[1])
+    return highest_scorer
 
 ## implement highest_score_for_player
 def highest_score_for_player(player_stats,player):
@@ -54,8 +51,6 @@ def highest_score_for_player(player_stats,player):
         if (i[1] > highest_score_for_player):
             highest_score_for_player = i[1]
     return highest_score_for_player
-
-print highest_score_for_player(player_stats,'ronaldo')
 
 ## implement highest_scorer
 def highest_scorer(player_stats):
@@ -72,8 +67,6 @@ def highest_scorer(player_stats):
             highest_scorer = i
     return highest_scorer
 
-print "The highest Scorer is :"
-print highest_scorer(player_stats)
 """
 Dictionary with Tuples:
 The name of the player serves as a Key which has
