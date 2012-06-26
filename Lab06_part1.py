@@ -3,6 +3,8 @@ Lab_Python_06
 Part 1
 """
 
+import datetime
+
 """
 Whatever the datastructure you choose,
 it should represent the following data:
@@ -19,6 +21,7 @@ torres		| 6/21/2012	| 1
 import time
 from datetime import date
 ## create the player_stats data structure
+
 player_stats = {
                 'rooney' :[(date(2012,6,23),2),
                            (date(2012,6,25),2)],
@@ -27,6 +30,7 @@ player_stats = {
                 'torres' :[(date(2012,6,21),0),
                            (date(2012,6,21),1)]
                 }
+
 
 ## implement highest_score
 def highest_score(player_stats):
@@ -38,6 +42,7 @@ def highest_score(player_stats):
                 highest_score = j[1]
     
     return highest_score
+
 
 print "The highest score is:",highest_score(player_stats)
 
