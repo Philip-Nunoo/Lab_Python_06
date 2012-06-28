@@ -1,6 +1,10 @@
 #Philip Afful Nunoo
 #Part II lab 06
-#####################Player Class####################
+####################Player Class######################
+import datetime
+import time
+from datetime import date
+
 class Player:
     def __init__(self,firstname,lastname,team = None):
         self.first_name = firstname
@@ -59,8 +63,8 @@ spain = Team('spain','spLeague','Kwadwo',16)
 print portugal
 print spain
 
-torres = Player('Fernando','Torres','spain')
-ronaldo = Player('Christiano','Ronaldo','portugal')
+torres = Player('Fernando','torres','spain')
+ronaldo = Player('Christiano','ronaldo','portugal')
 
 spain.add_player(torres)
 portugal.add_player(ronaldo)
@@ -71,18 +75,51 @@ class Match:
     def __init__(self,homeTeam,awayTeam,datePlayed):
         self.home_team = homeTeam
         self.away_team = awayTeam
-        self.date = date(datePlayed)
+        self.date = datePlayed
         self.home_scores = {}
         self.away_scores = {}
 
     def home_score(self):
-        return
+        sum1 = self.home_scores.values()
+        return sum1
 
     def away_score(self):
-        return
+        sum1 = self.away_scores.values()
+        print sum1
+        return sum1 
 
     def winner(self):
-        return
+        
+        if self.home_score()>self.away_score():
+            return self.home_team
+        elif self.away_score()>self.home_score():
+            return self.away_team
+        else:
+            return "Draw"
 
     def add_score(self,player,score):
-        return
+        result = {}
+        result = {"team":player.team}
+        
+        if (player.team == self.home_team):
+            result = {"type": "home"}
+            self.home_scores = {player.last_name:score}
+            print self.home_scores
+        else:
+            #result = {"type": "away"}
+            #self.away_scores = {player.last_name:score}
+            #print self.away_scores
+            if (self.away_scores[player.last_name]):
+                self.away_scores[player.last_name] += score
+            else:
+                self.away_scores = {player.last_name:score}
+
+        player.add_score(score)
+        
+        return result
+
+euro_semi_final = Match('spain','portugal',date(2012,6,23))
+euro_semi_final.add_score(ronaldo, 5)
+euro_semi_final.add_score(torres, 1)
+
+print "The winner is: ", euro_semi_final.winner()
